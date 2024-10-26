@@ -1,4 +1,4 @@
-package br.ufmt.alg3;
+package animais.loja;
 
 import static org.junit.Assert.assertTrue;
 

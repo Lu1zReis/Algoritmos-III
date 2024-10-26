@@ -1,0 +1,12 @@
+animais\loja\Estoque\Animal\AnimalDAO.class
+animais\loja\Funcionarios\Funcionario.class
+animais\loja\Estoque\Produto\ProdutoDAO.class
+animais\loja\Vendas\VendaDAO.class
+animais\loja\Vendas\Venda.class
+animais\loja\Funcionarios\FuncionarioDAO.class
+animais\loja\Clientes\Cliente.class
+animais\loja\Estoque\Animal\Animal.class
+App.class
+animais\loja\Conexao.class
+animais\loja\Estoque\Produto\Produto.class
+animais\loja\Clientes\ClienteDAO.class
