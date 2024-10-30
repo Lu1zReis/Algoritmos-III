@@ -47,7 +47,7 @@ public class FuncionarioDAO {
     }
 
     // Update
-    public void atualizarFuncionario(Funcionario funcionario) throws SQLException {
+    public boolean atualizarFuncionario(Funcionario funcionario) throws SQLException {
         String sql = "UPDATE Funcionario SET nome = ?, cpf = ?, cargo = ?, idade = ?, salario = ? WHERE id = ?";
         try (Connection connection = Conexao.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -57,17 +57,17 @@ public class FuncionarioDAO {
             stmt.setInt(4, funcionario.getIdade());
             stmt.setFloat(5, funcionario.getSalario());
             stmt.setInt(6, funcionario.getId());
-            stmt.executeUpdate();
+            return stmt.executeUpdate() > 0;
         }
     }
 
     // Delete
-    public void deletarFuncionario(int id) throws SQLException {
+    public boolean deletarFuncionario(int id) throws SQLException {
         String sql = "DELETE FROM Funcionario WHERE id = ?";
         try (Connection connection = Conexao.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
-            stmt.executeUpdate();
+            return stmt.executeUpdate() > 0;
         }
     }
 }
