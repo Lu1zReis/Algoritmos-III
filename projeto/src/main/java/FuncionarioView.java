@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -44,7 +45,7 @@ public class FuncionarioView extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         AdicionarFuncionario = new javax.swing.JMenuItem();
         VoltarMenu = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        EditarFuncionario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +75,7 @@ public class FuncionarioView extends javax.swing.JFrame {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+                funcionarioViewAncestorRemoved(evt);
             }
         });
         jScrollPane1.setViewportView(funcionarioView);
@@ -146,13 +148,13 @@ public class FuncionarioView extends javax.swing.JFrame {
         });
         jMenu1.add(VoltarMenu);
 
-        jMenuItem1.setText("Atualizar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        EditarFuncionario.setText("Atualizar");
+        EditarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                EditarFuncionarioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(EditarFuncionario);
 
         jMenuBar1.add(jMenu1);
 
@@ -195,6 +197,9 @@ public class FuncionarioView extends javax.swing.JFrame {
             try {
                 if (fDAO.deletarFuncionario(idN)) {
                     JOptionPane.showMessageDialog(this, "Funcionário deletado!");
+                    this.dispose();
+                    FuncionarioView f = new FuncionarioView();
+                    f.setVisible(true);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(FuncionarioView.class.getName()).log(Level.SEVERE, null, ex);
@@ -217,13 +222,48 @@ public class FuncionarioView extends javax.swing.JFrame {
         i.setVisible(true);
     }//GEN-LAST:event_VoltarMenuActionPerformed
 
+    private void carregarClientes() {
+        // Obtém o modelo da tabela
+        DefaultTableModel modeloTabela = (DefaultTableModel) funcionarioView.getModel();
+        modeloTabela.setRowCount(0); // Limpa a tabela
+
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        try {
+            for (Funcionario funcionario : funcionarioDAO.listarFuncionarios()) {
+                modeloTabela.addRow(new Object[]{
+                    funcionario.getId(),
+                    funcionario.getNome(),
+                    funcionario.getCpf(),
+                    funcionario.getCargo(),
+                    funcionario.getIdade(),
+                    funcionario.getSalario()
+                });
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao carregar funcionários: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    
     private void funcionarioViewAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_funcionarioViewAncestorAdded
         // TODO add your handling code here:
+        carregarClientes();
+
     }//GEN-LAST:event_funcionarioViewAncestorAdded
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void EditarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarFuncionarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        this.dispose();
+        FuncionarioEditar f = new FuncionarioEditar();
+        f.setVisible(true);
+    }//GEN-LAST:event_EditarFuncionarioActionPerformed
+
+    
+    
+    private void funcionarioViewAncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_funcionarioViewAncestorRemoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_funcionarioViewAncestorRemoved
 
     /**
      * @param args the command line arguments
@@ -262,6 +302,7 @@ public class FuncionarioView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AdicionarFuncionario;
+    private javax.swing.JMenuItem EditarFuncionario;
     private javax.swing.JMenuItem VoltarMenu;
     private javax.swing.JButton btn_idRemoveFuncionario;
     private javax.swing.JTable funcionarioView;
@@ -269,7 +310,6 @@ public class FuncionarioView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

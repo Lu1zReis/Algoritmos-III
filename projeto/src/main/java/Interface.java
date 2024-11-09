@@ -125,14 +125,23 @@ public class Interface extends javax.swing.JFrame {
 
     private void visualizarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarClientesActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        ClienteView f = new ClienteView();
+        f.setVisible(true);
     }//GEN-LAST:event_visualizarClientesActionPerformed
 
     private void visualizarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarProdutosActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        ProdutoView f = new ProdutoView();
+        f.setVisible(true);
     }//GEN-LAST:event_visualizarProdutosActionPerformed
 
     private void visualizarAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarAnimaisActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        AnimalView f = new AnimalView();
+        f.setVisible(true);
     }//GEN-LAST:event_visualizarAnimaisActionPerformed
 
     private void visualizarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarFuncionariosActionPerformed

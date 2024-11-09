@@ -12,24 +12,24 @@ import animais.loja.Conexao;
 public class AnimalDAO {
 
     // Create
-    public void adicionarAnimal(Animal animal) throws SQLException {
+    public boolean adicionarAnimal(Animal animal) throws SQLException {
+        Connection connection = Conexao.getConnection();
         String sql = "INSERT INTO Animal (raca, dataAdocao, castrado, anos) VALUES (?, ?, ?, ?)";
-        try (Connection connection = Conexao.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, animal.getRaca());
             stmt.setString(2, animal.getDataAdocao());
             stmt.setBoolean(3, animal.isCastrado());
             stmt.setInt(4, animal.getAnos());
-            stmt.executeUpdate();
+            return stmt.executeUpdate() > 0;
         }
     }
 
     // Read
     public List<Animal> listarAnimais() throws SQLException {
         List<Animal> animais = new ArrayList<>();
+        Connection connection = Conexao.getConnection();
         String sql = "SELECT * FROM Animal";
-        try (Connection connection = Conexao.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql);
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 Animal animal = new Animal();
@@ -45,26 +45,47 @@ public class AnimalDAO {
     }
 
     // Update
-    public void atualizarAnimal(Animal animal) throws SQLException {
+    public boolean atualizarAnimal(Animal animal) throws SQLException {
         String sql = "UPDATE Animal SET raca = ?, dataAdocao = ?, castrado = ?, anos = ? WHERE id = ?";
-        try (Connection connection = Conexao.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+        Connection connection = Conexao.getConnection();
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, animal.getRaca());
             stmt.setString(2, animal.getDataAdocao());
             stmt.setBoolean(3, animal.isCastrado());
             stmt.setInt(4, animal.getAnos());
             stmt.setInt(5, animal.getId());
-            stmt.executeUpdate();
+            return stmt.executeUpdate() > 0;
         }
     }
+    
+    public Animal buscarPorId(int id) throws SQLException {
+        Connection connection = Conexao.getConnection();
+        String query = "SELECT * FROM Animal WHERE id = ?";
+        Animal animal = null;
 
-    // Delete
-    public void deletarAnimal(int id) throws SQLException {
-        String sql = "DELETE FROM Animal WHERE id = ?";
-        try (Connection connection = Conexao.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, id);
-            stmt.executeUpdate();
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                animal = new Animal();
+                animal.setId(rs.getInt("id"));
+                animal.setRaca(rs.getString("raca"));
+                animal.setAnos(rs.getInt("anos"));
+                animal.setCastrado(rs.getBoolean("castrado"));
+                animal.setDataAdocao(rs.getString("dataadocao"));
+            }
+        }
+        return animal;
+    }
+   
+    // Delete
+    public boolean deletarAnimal(int id) throws SQLException {
+        String sql = "DELETE FROM Animal WHERE id = ?";
+        Connection connection = Conexao.getConnection();
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            return stmt.executeUpdate() > 0;
         }
     }
 }

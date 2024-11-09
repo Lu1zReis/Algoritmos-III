@@ -12,15 +12,14 @@ import animais.loja.Conexao;
 public class ClienteDAO {
 
     // Create
-    public void adicionarCliente(Cliente cliente) throws SQLException {
-        String sql = "INSERT INTO Cliente (nome, cpf, endereco, qntCompras) VALUES (?, ?, ?, ?)";
-        try (Connection connection = Conexao.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+    public boolean adicionarCliente(Cliente cliente) throws SQLException {
+        Connection connection = Conexao.getConnection();
+        String sql = "INSERT INTO Cliente (nome, cpf, endereco) VALUES (?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getCpf());
             stmt.setString(3, cliente.getEndereco());
-            stmt.setInt(4, cliente.getQntCompras());
-            stmt.executeUpdate();
+            return stmt.executeUpdate() > 0;
         }
     }
 
@@ -28,8 +27,8 @@ public class ClienteDAO {
     public List<Cliente> listarClientes() throws SQLException {
         List<Cliente> clientes = new ArrayList<>();
         String sql = "SELECT * FROM Cliente";
-        try (Connection connection = Conexao.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql);
+        Connection connection = Conexao.getConnection();
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 Cliente cliente = new Cliente();
@@ -37,7 +36,6 @@ public class ClienteDAO {
                 cliente.setNome(rs.getString("nome"));
                 cliente.setCpf(rs.getString("cpf"));
                 cliente.setEndereco(rs.getString("endereco"));
-                cliente.setQntCompras(rs.getInt("qntCompras"));
                 clientes.add(cliente);
             }
         }
@@ -45,26 +43,45 @@ public class ClienteDAO {
     }
 
     // Update
-    public void atualizarCliente(Cliente cliente) throws SQLException {
-        String sql = "UPDATE Cliente SET nome = ?, cpf = ?, endereco = ?, qntCompras = ? WHERE id = ?";
-        try (Connection connection = Conexao.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+    public boolean atualizarCliente(Cliente cliente) throws SQLException {
+        String sql = "UPDATE Cliente SET nome = ?, cpf = ?, endereco = ? WHERE id = ?";
+        Connection connection = Conexao.getConnection();
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getCpf());
             stmt.setString(3, cliente.getEndereco());
-            stmt.setInt(4, cliente.getQntCompras());
-            stmt.setInt(5, cliente.getId());
-            stmt.executeUpdate();
+            stmt.setInt(4, cliente.getId());
+            return stmt.executeUpdate() > 0;
         }
     }
 
-    // Delete
-    public void deletarCliente(int id) throws SQLException {
-        String sql = "DELETE FROM Cliente WHERE id = ?";
-        try (Connection connection = Conexao.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+    public Cliente buscarPorId(int id) throws SQLException {
+        Connection connection = Conexao.getConnection();
+        String query = "SELECT * FROM cliente WHERE id = ?";
+        Cliente c = null;
+
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, id);
-            stmt.executeUpdate();
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                c = new Cliente();
+                c.setId(rs.getInt("id"));
+                c.setNome(rs.getString("nome"));
+                c.setCpf(rs.getString("cpf"));
+                c.setEndereco(rs.getString("endereco"));
+            }
+        }
+        return c;
+    }
+    
+    // Delete
+    public boolean deletarCliente(int id) throws SQLException {
+        String sql = "DELETE FROM Cliente WHERE id = ?";
+        Connection connection = Conexao.getConnection();
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            return stmt.executeUpdate() > 0;
         }
     }
 }

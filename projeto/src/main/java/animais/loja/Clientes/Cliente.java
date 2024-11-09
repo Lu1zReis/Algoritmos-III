@@ -4,7 +4,7 @@ public class Cliente {
     private String nome;
     private String cpf;
     private String endereco;
-    private int qntCompras, id;
+    private int id;
 
     // atributo id
     public int getId() {
@@ -40,14 +40,5 @@ public class Cliente {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    // atributo qntCompras
-    public int getQntCompras() {
-        return qntCompras;
-    }
-
-    public void setQntCompras(int qntCompras) {
-        this.qntCompras = qntCompras;
     }
 }

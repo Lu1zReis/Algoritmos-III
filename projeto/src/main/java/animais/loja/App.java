@@ -23,7 +23,6 @@ public class App {
             cliente.setNome("João Silva");
             cliente.setCpf("123.456.789-00");
             cliente.setEndereco("Rua A, 123");
-            cliente.setQntCompras(5);
             ClienteDAO clienteDao = new ClienteDAO();
             clienteDao.adicionarCliente(cliente);
             System.out.println("Cliente adicionado com sucesso!");
