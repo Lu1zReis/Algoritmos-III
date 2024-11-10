@@ -196,7 +196,7 @@ public class ProdutoView extends javax.swing.JFrame {
             ProdutoDAO fDAO = new ProdutoDAO();
             try {
                 if (fDAO.deletarProduto(idN)) {
-                    JOptionPane.showMessageDialog(this, "Funcionário deletado!");
+                    JOptionPane.showMessageDialog(this, "Produto deletado!");
                     this.dispose();
                     ProdutoView f = new ProdutoView();
                     f.setVisible(true);
