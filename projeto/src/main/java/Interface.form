@@ -43,26 +43,27 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="visualizarAnimais" max="32767" attributes="0"/>
+                      <Component id="visualizarVendas" max="32767" attributes="0"/>
                       <Component id="visualizarProdutos" max="32767" attributes="0"/>
                       <Component id="visualizarClientes" max="32767" attributes="0"/>
                       <Component id="visualizarFuncionarios" alignment="1" max="32767" attributes="0"/>
+                      <Component id="visualizarAnimais1" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="167" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jSeparator1" min="-2" pref="50" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                          <Component id="jSeparator1" min="-2" pref="67" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -79,11 +80,13 @@
                   <Component id="visualizarFuncionarios" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="visualizarClientes" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="visualizarProdutos" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="visualizarAnimais" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="134" max="32767" attributes="0"/>
+                  <Component id="visualizarAnimais1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="visualizarVendas" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="95" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -94,7 +97,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Menu"/>
+            <Property name="text" type="java.lang.String" value="Sistema de Loja PET"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="visualizarClientes">
@@ -113,12 +116,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="visualizarProdutosActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="visualizarAnimais">
+        <Component class="javax.swing.JButton" name="visualizarVendas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Visualizar Animais"/>
+            <Property name="text" type="java.lang.String" value="Visualizar Vendas"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="visualizarAnimaisActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="visualizarVendasActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="visualizarFuncionarios">
@@ -130,6 +133,14 @@
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
+        </Component>
+        <Component class="javax.swing.JButton" name="visualizarAnimais1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Visualizar Animais"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="visualizarAnimais1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

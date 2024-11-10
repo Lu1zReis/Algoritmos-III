@@ -29,16 +29,17 @@ public class Interface extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         visualizarClientes = new javax.swing.JButton();
         visualizarProdutos = new javax.swing.JButton();
-        visualizarAnimais = new javax.swing.JButton();
+        visualizarVendas = new javax.swing.JButton();
         visualizarFuncionarios = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        visualizarAnimais1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Menu");
+        jLabel1.setText("Sistema de Loja PET");
 
         visualizarClientes.setText("Visualizar Clientes");
         visualizarClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -54,11 +55,10 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        visualizarAnimais.setText("Visualizar Animais");
-        visualizarAnimais.setActionCommand("Visualizar Animais");
-        visualizarAnimais.addActionListener(new java.awt.event.ActionListener() {
+        visualizarVendas.setText("Visualizar Vendas");
+        visualizarVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visualizarAnimaisActionPerformed(evt);
+                visualizarVendasActionPerformed(evt);
             }
         });
 
@@ -69,6 +69,13 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        visualizarAnimais1.setText("Visualizar Animais");
+        visualizarAnimais1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visualizarAnimais1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -76,20 +83,21 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(162, 162, 162)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(visualizarAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(visualizarVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(visualizarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(visualizarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(visualizarFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(visualizarFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(visualizarAnimais1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(167, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(222, 222, 222))
+                        .addGap(184, 184, 184))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(212, 212, 212))))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(206, 206, 206))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,11 +110,13 @@ public class Interface extends javax.swing.JFrame {
                 .addComponent(visualizarFuncionarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(visualizarClientes)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(visualizarProdutos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(visualizarAnimais)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addComponent(visualizarAnimais1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(visualizarVendas)
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,12 +147,12 @@ public class Interface extends javax.swing.JFrame {
         f.setVisible(true);
     }//GEN-LAST:event_visualizarProdutosActionPerformed
 
-    private void visualizarAnimaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarAnimaisActionPerformed
+    private void visualizarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarVendasActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        AnimalView f = new AnimalView();
+        VendaView f = new VendaView();
         f.setVisible(true);
-    }//GEN-LAST:event_visualizarAnimaisActionPerformed
+    }//GEN-LAST:event_visualizarVendasActionPerformed
 
     private void visualizarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarFuncionariosActionPerformed
         // TODO add your handling code here:
@@ -150,6 +160,13 @@ public class Interface extends javax.swing.JFrame {
         FuncionarioView f = new FuncionarioView();
         f.setVisible(true); 
     }//GEN-LAST:event_visualizarFuncionariosActionPerformed
+
+    private void visualizarAnimais1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarAnimais1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        AnimalView f = new AnimalView();
+        f.setVisible(true);  
+    }//GEN-LAST:event_visualizarAnimais1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,9 +207,10 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton visualizarAnimais;
+    private javax.swing.JButton visualizarAnimais1;
     private javax.swing.JButton visualizarClientes;
     private javax.swing.JButton visualizarFuncionarios;
     private javax.swing.JButton visualizarProdutos;
+    private javax.swing.JButton visualizarVendas;
     // End of variables declaration//GEN-END:variables
 }

@@ -30,8 +30,8 @@ public class FuncionarioDAO {
         Connection connection = Conexao.getConnection();
         List<Funcionario> funcionarios = new ArrayList<>();
         String sql = "SELECT * FROM Funcionario";
-        try (PreparedStatement stmt = connection.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        try (ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 Funcionario funcionario = new Funcionario();
                 funcionario.setId(rs.getInt("id"));

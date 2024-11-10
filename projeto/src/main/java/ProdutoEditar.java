@@ -110,7 +110,7 @@ public class ProdutoEditar extends javax.swing.JFrame {
             }
         });
 
-        jLabel25.setText("Buscar funcionário por Id");
+        jLabel25.setText("Buscar produto por Id");
 
         btn_buscar_produto.setText("Ok");
         btn_buscar_produto.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +140,7 @@ public class ProdutoEditar extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addComponent(btn_buscar_produto, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)

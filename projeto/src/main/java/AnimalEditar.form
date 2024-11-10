@@ -60,7 +60,7 @@
                           <Component id="btn_buscar_animal" min="-2" pref="63" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="57" max="32767" attributes="0"/>
+                  <EmptySpace pref="82" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
@@ -212,7 +212,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel25">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Buscar funcion&#xe1;rio por Id"/>
+            <Property name="text" type="java.lang.String" value="Buscar animal por Id"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btn_buscar_animal">
